@@ -18,8 +18,7 @@
 
     <center>
         <VBox alignment="CENTER"
-              spacing="14"
-              maxWidth="380"
+              spacing="10"
               styleClass="card">
 
             <Label text="Personal Expense Tracker"
@@ -38,7 +37,9 @@
 
             <Label fx:id="messageLabel"
                    text=""
-                   styleClass="status-label"/>
+                   styleClass="status-label"
+                   minHeight="18"
+                   prefHeight="18"/>
 
             <Button fx:id="loginButton"
                     text="Login"

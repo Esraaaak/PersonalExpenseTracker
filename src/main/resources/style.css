@@ -1,21 +1,25 @@
 /* Shared style for Personal Expense Tracker */
 
 .app-background {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-background-color: linear-gradient(to bottom right, #eef2f7, #dbe4f0);
 }
 
 .card {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-background-color: white;
-    -fx-background-radius: 16;
-    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.14), 24, 0, 0, 8);
-    -fx-padding: 32;
+    -fx-padding: 60;
     -fx-alignment: center;
-    -fx-spacing: 14;
+    -fx-spacing: 10;
 }
 
 .section-card {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-background-color: white;
     -fx-background-radius: 14;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
     -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.10), 18, 0, 0, 5);
     -fx-padding: 20;
     -fx-spacing: 12;
@@ -51,6 +55,7 @@
     -fx-background-radius: 8;
     -fx-padding: 8 10;
     -fx-font-size: 13px;
+    -fx-prompt-text-fill: #64748b;
 }
 
 .app-text-field:focused {

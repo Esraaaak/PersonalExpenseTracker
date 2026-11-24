@@ -19,8 +19,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("/view/Login.fxml"), 520, 420);
-        stage.setTitle("Personal Expense Tracker - Login");
+        stage.setTitle("Login");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
