@@ -1,0 +1,130 @@
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.AddExpenseController"
+      stylesheets="@../style.css"
+      styleClass="expense-background"
+      prefWidth="950"
+      prefHeight="680"
+      spacing="20">
+
+    <padding>
+        <Insets top="25" right="35"
+                bottom="25" left="35"/>
+    </padding>
+
+    <VBox styleClass="expense-card"
+          spacing="16"
+          VBox.vgrow="ALWAYS">
+
+        <!-- Page Header -->
+        <VBox spacing="5">
+            <Label text="Add Expense"
+                   styleClass="expense-title"/>
+
+            <Label text="Track your spending, one expense at a time."
+                   styleClass="expense-subtitle"/>
+        </VBox>
+
+        <Separator/>
+
+        <Label text="EXPENSE DETAILS"
+               styleClass="expense-section-title"/>
+
+        <!-- Expense Name -->
+        <VBox spacing="5">
+            <Label text="Expense Name"
+                   styleClass="field-label"/>
+
+            <TextField fx:id="nameField"
+                       promptText="e.g. Morning coffee"
+                       styleClass="expense-input"/>
+        </VBox>
+
+        <!-- Amount and Category -->
+        <HBox spacing="15">
+
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Amount (SAR)"
+                       styleClass="field-label"/>
+
+                <TextField fx:id="amountField"
+                           promptText="0.00"
+                           styleClass="expense-input"/>
+            </VBox>
+
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Category"
+                       styleClass="field-label"/>
+
+                <ComboBox fx:id="categoryComboBox"
+                          promptText="Select category"
+                          styleClass="expense-input"
+                          maxWidth="Infinity"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- Expense Date -->
+        <VBox spacing="5">
+            <Label text="Expense Date"
+                   styleClass="field-label"/>
+
+            <DatePicker fx:id="datePicker"
+                        styleClass="expense-input"
+                        maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Optional Notes -->
+        <VBox spacing="5">
+            <Label text="Notes (Optional)"
+                   styleClass="field-label"/>
+
+            <TextArea fx:id="notesArea"
+                      promptText="Add a note about this expense..."
+                      styleClass="expense-notes"
+                      prefRowCount="3"
+                      wrapText="true"/>
+        </VBox>
+
+        <!-- Recurring Expense -->
+        <VBox styleClass="recurring-card" spacing="6">
+
+            <CheckBox fx:id="recurringCheckBox"
+                      text="Recurring Expense"/>
+
+            <Label text="Mark this expense as a recurring payment."
+                   styleClass="expense-subtitle"/>
+
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Separator/>
+
+        <!-- Status and Action Buttons -->
+        <HBox spacing="12" alignment="CENTER_LEFT">
+
+            <Label fx:id="statusLabel"
+                   styleClass="status-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    styleClass="expense-cancel-button"/>
+
+            <Button fx:id="saveButton"
+                    text="Save Expense"
+                    styleClass="expense-save-button"/>
+
+        </HBox>
+
+    </VBox>
+
+</VBox>
