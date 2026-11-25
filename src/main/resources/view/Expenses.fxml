@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.ExpensesController"
+      stylesheets="@../style.css"
+      styleClass="app-background"
+      prefWidth="950"
+      prefHeight="600"
+      spacing="20">
+
+    <padding>
+        <Insets top="25" right="25"
+                bottom="25" left="25"/>
+    </padding>
+
+    <VBox styleClass="section-card"
+          spacing="15"
+          VBox.vgrow="ALWAYS">
+
+        <!-- Page Header -->
+        <HBox alignment="CENTER_LEFT" spacing="15">
+
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+
+                <Label text="Expenses"
+                       styleClass="title-label"/>
+
+                <Label text="Manage and track your expenses"
+                       styleClass="subtitle-label"/>
+
+            </VBox>
+
+            <Button fx:id="addButton"
+                    text="+ Add Expense"
+                    styleClass="primary-button"/>
+
+        </HBox>
+
+        <Separator/>
+
+        <!-- Search and Filters -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+
+            <TextField fx:id="searchField"
+                       promptText="Search expenses..."
+                       styleClass="app-text-field"
+                       HBox.hgrow="ALWAYS"/>
+
+            <ComboBox fx:id="categoryComboBox"
+                      promptText="All Categories"
+                      prefWidth="160"/>
+
+            <ComboBox fx:id="sortComboBox"
+                      promptText="Sort by"
+                      prefWidth="160"/>
+
+        </HBox>
+
+        <!-- Expenses Table -->
+        <TableView fx:id="expensesTable"
+                   VBox.vgrow="ALWAYS">
+
+            <columns>
+
+                <TableColumn fx:id="nameColumn"
+                             text="Name"
+                             prefWidth="235"/>
+
+                <TableColumn fx:id="categoryColumn"
+                             text="Category"
+                             prefWidth="200"/>
+
+                <TableColumn fx:id="amountColumn"
+                             text="Amount (SAR)"
+                             prefWidth="200"/>
+
+                <TableColumn fx:id="dateColumn"
+                             text="Date"
+                             prefWidth="190"/>
+
+            </columns>
+
+            <placeholder>
+                <Label text="No expenses found"/>
+            </placeholder>
+
+        </TableView>
+
+        <!-- Footer and Action Buttons -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+
+            <Label fx:id="statusLabel"
+                   text="0 expenses found"
+                   styleClass="status-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="editButton"
+                    text="Edit"
+                    styleClass="secondary-button"
+                    disable="true"/>
+
+            <Button fx:id="deleteButton"
+                    text="Delete"
+                    styleClass="danger-button"
+                    disable="true"/>
+
+        </HBox>
+
+    </VBox>
+
+</VBox>
