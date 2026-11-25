@@ -1,134 +1,278 @@
 /* Shared style for Personal Expense Tracker */
 
 .app-background {
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-background-color: linear-gradient(to bottom right, #eef2f7, #dbe4f0);
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  -fx-background-color: linear-gradient(to bottom right, #eef2f7, #dbe4f0);
 }
 
 .card {
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-background-color: white;
-    -fx-padding: 60;
-    -fx-alignment: center;
-    -fx-spacing: 10;
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  -fx-background-color: white;
+  -fx-padding: 60;
+  -fx-alignment: center;
+  -fx-spacing: 10;
 }
 
 .section-card {
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-background-color: white;
-    -fx-background-radius: 14;
-    -fx-border-color: #e2e8f0;
-    -fx-border-width: 1;
-    -fx-border-radius: 14;
-    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.10), 18, 0, 0, 5);
-    -fx-padding: 20;
-    -fx-spacing: 12;
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  -fx-background-color: white;
+  -fx-background-radius: 14;
+  -fx-border-color: #e2e8f0;
+  -fx-border-width: 1;
+  -fx-border-radius: 14;
+  -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.1), 18, 0, 0, 5);
+  -fx-padding: 20;
+  -fx-spacing: 12;
 }
 
 .title-label {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #0f172a;
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #0f172a;
 }
 
 .subtitle-label {
-    -fx-font-size: 13px;
-    -fx-text-fill: #64748b;
+  -fx-font-size: 13px;
+  -fx-text-fill: #64748b;
 }
 
 .section-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #0f172a;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #0f172a;
 }
 
 .field-label {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #475569;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #475569;
 }
 
 .app-text-field {
-    -fx-background-color: #f8fafc;
-    -fx-border-color: #cbd5e1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 8 10;
-    -fx-font-size: 13px;
-    -fx-prompt-text-fill: #64748b;
+  -fx-background-color: #f8fafc;
+  -fx-border-color: #cbd5e1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-padding: 8 10;
+  -fx-font-size: 13px;
+  -fx-prompt-text-fill: #64748b;
 }
 
 .app-text-field:focused {
-    -fx-background-color: white;
-    -fx-border-color: #2563eb;
+  -fx-background-color: white;
+  -fx-border-color: #2563eb;
 }
 
 .primary-button {
-    -fx-background-color: #2563eb;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-background-radius: 8;
-    -fx-padding: 9 20;
-    -fx-cursor: hand;
+  -fx-background-color: #2563eb;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-font-size: 13px;
+  -fx-background-radius: 8;
+  -fx-padding: 9 20;
+  -fx-cursor: hand;
 }
 
 .primary-button:hover {
-    -fx-background-color: #1d4ed8;
+  -fx-background-color: #1d4ed8;
 }
 
 .primary-button:disabled {
-    -fx-background-color: #b9c8dc;
-    -fx-text-fill: #f8fafc;
-    -fx-opacity: 1;
+  -fx-background-color: #b9c8dc;
+  -fx-text-fill: #f8fafc;
+  -fx-opacity: 1;
 }
 
 .secondary-button {
-    -fx-background-color: #e2e8f0;
-    -fx-text-fill: #1e293b;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-background-radius: 8;
-    -fx-padding: 9 16;
-    -fx-cursor: hand;
+  -fx-background-color: #e2e8f0;
+  -fx-text-fill: #1e293b;
+  -fx-font-weight: bold;
+  -fx-font-size: 13px;
+  -fx-background-radius: 8;
+  -fx-padding: 9 16;
+  -fx-cursor: hand;
 }
 
 .secondary-button:hover {
-    -fx-background-color: #cbd5e1;
+  -fx-background-color: #cbd5e1;
 }
 
 .danger-button {
-    -fx-background-color: #ef4444;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-background-radius: 8;
-    -fx-padding: 9 16;
-    -fx-cursor: hand;
+  -fx-background-color: #ef4444;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-font-size: 13px;
+  -fx-background-radius: 8;
+  -fx-padding: 9 16;
+  -fx-cursor: hand;
 }
 
 .danger-button:hover {
-    -fx-background-color: #dc2626;
+  -fx-background-color: #dc2626;
 }
 
 .status-label {
-    -fx-text-fill: #64748b;
-    -fx-font-size: 12px;
+  -fx-text-fill: #64748b;
+  -fx-font-size: 12px;
 }
 
 .app-list-view {
-    -fx-background-color: white;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+  -fx-background-color: white;
+  -fx-border-color: #e2e8f0;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
 }
 
 .app-list-view .list-cell {
-    -fx-padding: 8 10;
-    -fx-font-size: 13px;
+  -fx-padding: 8 10;
+  -fx-font-size: 13px;
 }
 
 .app-list-view .list-cell:selected {
-    -fx-background-color: #dbeafe;
-    -fx-text-fill: #0f172a;
+  -fx-background-color: #dbeafe;
+  -fx-text-fill: #0f172a;
+}
+/* =====================================
+   Member 3 - Add Expense Screen
+   ===================================== */
+
+.expense-background {
+  -fx-background-color: linear-gradient(to bottom right, #f1f5f9, #dbe4f0);
+  -fx-font-family: "Segoe UI", Arial;
+}
+
+.expense-card {
+  -fx-background-color: white;
+  -fx-background-radius: 20;
+  -fx-border-radius: 20;
+  -fx-border-color: #e2e8f0;
+  -fx-padding: 28;
+  -fx-spacing: 16;
+  -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.1), 24, 0, 0, 6);
+}
+
+.expense-title {
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #0f172a;
+}
+
+.expense-subtitle {
+  -fx-font-size: 13px;
+  -fx-text-fill: #64748b;
+}
+
+.expense-section-title {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #4338ca;
+}
+
+/* Input fields */
+
+.expense-input {
+  -fx-background-color: #f8fafc;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
+  -fx-border-color: #cbd5e1;
+  -fx-padding: 10 12;
+  -fx-font-size: 13px;
+  -fx-prompt-text-fill: #94a3b8;
+}
+
+.expense-input:focused {
+  -fx-background-color: white;
+  -fx-border-color: #2563eb;
+}
+
+/* Notes field */
+
+.expense-notes {
+  -fx-background-color: #f8fafc;
+  -fx-border-color: #cbd5e1;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+  -fx-font-size: 13px;
+}
+
+.expense-notes .content {
+  -fx-background-color: #f8fafc;
+  -fx-background-radius: 10;
+}
+
+.expense-notes:focused {
+  -fx-border-color: #2563eb;
+}
+
+/* Recurring expense card */
+
+.recurring-card {
+  -fx-background-color: #eef2ff;
+  -fx-background-radius: 12;
+  -fx-border-color: #e0e7ff;
+  -fx-border-radius: 12;
+  -fx-padding: 14;
+  -fx-spacing: 6;
+}
+
+.recurring-card .check-box {
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #312e81;
+}
+
+.recurring-card .check-box .box {
+  -fx-background-color: white;
+  -fx-border-color: #818cf8;
+  -fx-border-radius: 4;
+  -fx-background-radius: 4;
+}
+
+.recurring-card .check-box:selected .box {
+  -fx-background-color: #4f46e5;
+}
+
+.recurring-card .check-box:selected .mark {
+  -fx-background-color: white;
+}
+
+/* Save button */
+
+.expense-save-button {
+  -fx-background-color: #2563eb;
+  -fx-background-radius: 10;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-padding: 12 24;
+  -fx-cursor: hand;
+}
+
+.expense-save-button:hover {
+  -fx-background-color: #1d4ed8;
+}
+
+.expense-save-button:pressed {
+  -fx-background-color: #1e40af;
+}
+
+.expense-save-button:disabled {
+  -fx-background-color: #b9c8dc;
+  -fx-opacity: 1;
+}
+
+/* Cancel button */
+
+.expense-cancel-button {
+  -fx-background-color: #e2e8f0;
+  -fx-background-radius: 10;
+  -fx-text-fill: #334155;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-padding: 12 22;
+  -fx-cursor: hand;
+}
+
+.expense-cancel-button:hover {
+  -fx-background-color: #cbd5e1;
 }
