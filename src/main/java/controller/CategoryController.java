@@ -12,8 +12,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import model.Category;
+import service.ExpenseStorageService;
+import service.FileStorageService;
 
+import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class CategoryController {
@@ -202,9 +206,17 @@ public class CategoryController {
 
         statusLabel.setText("Category deleted.");
     }
-private boolean usedByExpenses(String categoryName) {
-    return false;
-}
+    private boolean usedByExpenses(String categoryName) {
+        try {
+            return ExpenseStorageService.loadExpenses().stream()
+                    .anyMatch(expense -> categoryName.equalsIgnoreCase(
+                            expense.getCategory()));
+        } catch (IllegalStateException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to check expenses.");
+            return true;
+        }
+    }
 
     private void updateButtons() {
         boolean hasSelection =
@@ -230,13 +242,26 @@ private boolean usedByExpenses(String categoryName) {
         ));
     }
 
-  private void loadCategories() {
-    categories.clear();
-    statusLabel.setText("Storage not connected yet.");
-}
- private void saveCategories() {
-    // Temporary: Member 3 will connect FileStorageService.
-}
+    private void loadCategories() {
+        try {
+            List<Category> loaded =
+                    FileStorageService.loadList(
+                            "categories.dat", Category.class);
+            categories.setAll(loaded);
+            statusLabel.setText("");
+        } catch (IOException | ClassNotFoundException e) {
+            statusLabel.setText("Unable to load categories.");
+        }
+    }
+
+    private void saveCategories() {
+        try {
+            FileStorageService.saveList("categories.dat", categories);
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to save categories.");
+        }
+    }
 
     private void showAlert(Alert.AlertType type, String message) {
         Alert alert = new Alert(type, message);

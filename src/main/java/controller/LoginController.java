@@ -15,7 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import model.User;
+import service.FileStorageService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -179,11 +181,22 @@ passwordField.setOnKeyPressed(e -> {
     }
 
     private void loadUsers() {
-        users = new ArrayList<>();
+        try {
+            users = FileStorageService.loadList("users.dat", User.class);
+        } catch (IOException | ClassNotFoundException e) {
+            users = new ArrayList<>();
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to load users.");
+        }
     }
 
     private void saveUsers() {
-        // Temporary: Member 3 will connect FileStorageService.
+        try {
+            FileStorageService.saveList("users.dat", users);
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to save users.");
+        }
     }
 
     private void navigateTo(
