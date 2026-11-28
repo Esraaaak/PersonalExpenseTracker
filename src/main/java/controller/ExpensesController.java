@@ -22,7 +22,11 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
-
+import model.Category;
+import service.ExpenseStorageService;
+import service.FileStorageService;
+import java.io.IOException;
+import java.util.stream.Collectors;
 import model.Expense;
 import service.ExpenseFilterService;
 
@@ -32,8 +36,8 @@ import java.util.ArrayList;
 
 
 public class ExpensesController {
-    
-        @FXML private TextField searchField;
+
+    @FXML private TextField searchField;
 
     @FXML private ComboBox<String> categoryComboBox;
     @FXML private ComboBox<String> sortComboBox;
@@ -54,19 +58,17 @@ public class ExpensesController {
     private final ObservableList<Expense> allExpenses =
             FXCollections.observableArrayList();
 
-    // Temporary categories for testing
+
     private final ObservableList<String> categories =
-            FXCollections.observableArrayList(
-                    "Food", "Travel", "Education", "Shopping"
-            );
+            FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-
         setupTable();
+        loadCategories();
+        loadExpenses();
         setupFilters();
         setupEvents();
-        loadMockExpenses();
         refreshTable();
     }
 
@@ -170,31 +172,29 @@ public class ExpensesController {
         });
     }
 
-    // Temporary expense data for testing
-    private void loadMockExpenses() {
+    private void loadCategories() {
+        try {
+            List<Category> loaded = FileStorageService.loadList(
+                    "categories.dat", Category.class);
 
-        allExpenses.setAll(
+            categories.setAll(loaded.stream()
+                    .map(Category::getName)
+                    .sorted(String.CASE_INSENSITIVE_ORDER)
+                    .collect(Collectors.toList()));
 
-                new Expense("Coffee", 15.0, "Food",
-                        LocalDate.of(2026, 11, 20),
-                        "Morning coffee", false),
+        } catch (IOException | ClassNotFoundException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to load categories.");
+        }
+    }
 
-                new Expense("Uber", 35.0, "Travel",
-                        LocalDate.of(2026, 11, 21),
-                        "", false),
-
-                new Expense("Lunch", 45.0, "Food",
-                        LocalDate.of(2026, 11, 22),
-                        "", false),
-
-                new Expense("Books", 120.0, "Education",
-                        LocalDate.of(2026, 11, 23),
-                        "", false),
-
-                new Expense("Shoes", 200.0, "Shopping",
-                        LocalDate.of(2026, 11, 24),
-                        "", false)
-        );
+    private void loadExpenses() {
+        try {
+            allExpenses.setAll(ExpenseStorageService.loadExpenses());
+        } catch (IllegalStateException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to load expenses.");
+        }
     }
 
     // Search, filter and sort expenses
@@ -381,12 +381,15 @@ public class ExpensesController {
 
             if (index >= 0) {
 
-                allExpenses.set(index, updated);
+                List<Expense> updatedExpenses =
+                        new ArrayList<>(allExpenses);
 
-                refreshTable();
+                updatedExpenses.set(index, updated);
 
-                showAlert(Alert.AlertType.INFORMATION,
-                        "Expense updated successfully.");
+                if (saveChanges(updatedExpenses)) {
+                    showAlert(Alert.AlertType.INFORMATION,
+                            "Expense updated successfully.");
+                }
             }
         });
     }
@@ -416,12 +419,15 @@ public class ExpensesController {
         if (confirmation.showAndWait()
                 .orElse(ButtonType.NO) == ButtonType.YES) {
 
-            allExpenses.remove(selected);
+            List<Expense> updatedExpenses =
+                    new ArrayList<>(allExpenses);
 
-            refreshTable();
+            updatedExpenses.remove(selected);
 
-            showAlert(Alert.AlertType.INFORMATION,
-                    "Expense deleted successfully.");
+            if (saveChanges(updatedExpenses)) {
+                showAlert(Alert.AlertType.INFORMATION,
+                        "Expense deleted successfully.");
+            }
         }
     }
 
@@ -430,6 +436,18 @@ public class ExpensesController {
 
         showAlert(Alert.AlertType.INFORMATION,
                 "Add Expense page is not connected yet.");
+    }
+    private boolean saveChanges(List<Expense> updatedExpenses) {
+        try {
+            ExpenseStorageService.saveExpenses(updatedExpenses);
+            allExpenses.setAll(updatedExpenses);
+            refreshTable();
+            return true;
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR,
+                    "Unable to save expenses.");
+            return false;
+        }
     }
 
     // Reusable alert method
@@ -442,6 +460,7 @@ public class ExpensesController {
         alert.showAndWait();
     }
 }
+
     
     
 
